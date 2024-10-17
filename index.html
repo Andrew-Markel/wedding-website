@@ -48,6 +48,29 @@
                 document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
             }
         }
+
+        // Create popup for alcohol pane
+        function showPopup(event) {
+            var popup = document.getElementById("myPopup");
+
+            // Get the position of the link
+            var linkRect = event.target.getBoundingClientRect();
+            
+            // Set the position of the pop-up above the link
+            popup.style.left = linkRect.left + "px";
+            popup.style.top = (linkRect.top - popup.offsetHeight) + "px";
+
+            // Show the pop-up
+            popup.style.display = "block";
+
+            // Close the pop-up when clicking outside
+            document.addEventListener('click', function closePopup(e) {
+                if (!popup.contains(e.target) && e.target !== event.target) {
+                    popup.style.display = 'none';
+                    document.removeEventListener('click', closePopup);
+                }
+            });
+        }
     </script>
 
     <link rel="stylesheet" href="css/normalize.min.css">
@@ -116,9 +139,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3>We are getting hitched</h3>
-                <p>The dates are 27<sup>th</sup> & 28<sup>th</sup> of November '17 and we would like you to be a part of
-                    it.</p>
+                <h3>Andrew Markel and Emma Gable are getting married</h3>
+                <p>The date is Friday the 8<sup>th</sup> of August 2025 and we would like you to be a part of
+                    and witness to the Sacrament of Holy Matrimony .</p>
                 <div class="share-bar"></div>
             </div>
         </div>
@@ -136,12 +159,15 @@
             <div class="col-md-3 hidden-sm hidden-xs"><img src="img/IMG_2317.jpg" class="wp1"></div>
             <div class="col-md-6">
                 <p>
-                    I first saw Antara in the Fall of 2008 when we started our undergrad. I was instantly attracted to
-                    her but was far too nervous to speak to her. I had told my friend I liked her and news had traveled
-                    fast and she soon found out. Her first reaction was "Who is Ram?" and she began searching for me in
-                    the class. She started to take notice of me and no matter how boring the lecture was, we never
-                    missed a class after that. After a good few months I finally plucked up the courage to ask her out
-                    and the rest is history :)
+                    Andrew and Emma met online on Instagram through a mutual Catholic account they both followed. 
+                    That Catholic account had posted a dating post for Catholic people to meet each other, and Andrew 
+                    had posted a short bio about himself as a comment to this post around December 2023. Emma wasn't 
+                    able to respond to any of the comments until she turned 18 in March 2024, so on her birthday, March 
+                    10, 2024, was when Emma reached out to Andrew on Instagram. They began talking and doing video calls 
+                    as often as they could, often stretching into the early hours of the morning - after all, they were college
+                    students, and who needs sleep anyway. Their first date was on Sunday, March 24 when Andrew made the 4 hour 
+                    drive from Indiana to her house in Michigan where they attended Mass with her family and spent the day 
+                    walking around the city of Wyandotte, visiting other churches, talking about everything. 
                 </p>
             </div>
             <div class="col-md-3 hidden-sm hidden-xs"><img src="img/DSD_0214.jpg" class="wp2"></div>
@@ -157,46 +183,50 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="header">Events</h3>
+                <h3 class="header">Event</h3>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
                 <div class="wp3">
-                    <p><strong>27th November</strong></p>
+                    <p><strong>8th August</strong></p>
 
-                    <h5>Mehndi <span class="time">1PM - 5PM</span></h5>
-                    <p>It's one of the oldest traditional Indian pre wedding ceremony where the bride and groom
-                        attend the event together and a professional mehndi artist applies
-                        mehndi to the bride's hands and feet. This will be having a celebratory
-                        festival feel to it with people wearing vibrant clothes and dancing, singing, playing
-                        games and a lot more.</p>
-                </div>
+                    <h5>Wedding Mass <span class="time">11AM - 12:30AM</span></h5>
+                    <p>As marriage is a Sacrament, this is the main event and the most important part where the marriage happens! 
+                        The Wedding Mass will be done in the Tridentine Rite (Traditional Latin Mass) at St. Stephen Church. 
+                        This Mass consists of two parts: the marriage service, and the Nuptial Mass. The exchange of vows
+                        and blessing from the priest occurs prior to the Mass during the marriage service, 
+                        and the Nuptial Mass follows where the bride and groom participate in their first Eucharist as husband and wife. 
+                        </p>
+                <!--</div>
                 <div class="wp5">
                     <h5>Cocktail Night <span class="time">7PM - 12AM</span></h5>
                     <p>This event is no way close to ethnic. The bride & groom would like to have some "shots before the
                         knot". With booze flowing down the floor and the western attire on, everyone would be busy
                         showing off their new moves on the stage which they have finely honed. Lastly, expect some beer
                         pong matches & karaoke for sure.</p>
-                </div>
+                </div>-->
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
                 <div class="wp4">
-                    <p><strong>28th November</strong></p>
+                    <p><strong>8th August</strong></p>
 
-                    <h5>Haldi <span class="time">10AM-11AM</span></h5>
-                    <p>The haldi ceremony is usually held separately for the bride and the groom. This one is for the
-                        bride. It is a low-key event that involves the application of turmeric paste on the hands, legs
-                        and face of the bride. The groom is not allowed to see the bride after this ritual until the
-                        final wedding ceremony starts.</p>
+                    <h5>Wedding Reception <span class="time">1:30PM - TBD</span></h5>
+                    <p>The wedding reception is a place for members of both families and friends of the bride and groom
+                        to socialize amongst themselves and get to know each other. 
+                        A formal dinner and wedding cake will be provided. 
+                        This is a dry event, and alcohol will not be provided. <span class="popup-link" onclick="showPopup(event)">Why no alcohol? </span></p>
+                    <div class="popup" id="myPopup">
+                        Reasons for no alcohol go here. TBD
+                    </div>
                 </div>
-                <div class="wp6">
+                <!--<div class="wp6">
                     <h5>Wedding <span class="time">6PM-12AM</span></h5>
                     <p>This is the main event in the entire wedding when the bride and the groom tie the
                         knot. The groom comes with the barat and is greeted by the bride side with some dhol of course
                         as maximum number of guests would be attending this event. This is when the couple circle the
                         sacred fire and are finally declared husband and wife.</p>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class="row section-padding">
@@ -218,18 +248,18 @@
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
                     </button>
-                    <h3 class="text-center section-padding">Ugh... dress codes?</h3>
-                    <h5>Mehndi <span class="time">1PM - 5PM</span></h5>
+                    <h3 class="text-center section-padding">Dress code</h3>
+                    <h5>Wedding Mass & Reception <span class="time">10:45 am - TBD</span></h5>
                     <p>
-                        <strong>Ethnic indian wear</strong>
+                        <strong>Formal Attire</strong>
                         <br>
-                        Ladies can wear something
-                        <a href="https://www.pinterest.com/ramswarooppatra/mehndi-dress-for-women/">bright & vivid</a>
-                        and gentlemen can be on
-                        their <a href="https://www.pinterest.com/ramswarooppatra/mehndi-dress-for-men/">vibrant
-                        kurtas</a> with pants or pyjamas along with an optional shawl.
+                        Attire should be follow dress for the Traditional Latin Mass. 
+                        Ladies should wear floor length or past-knee length dresses 
+                        and gentlemen should wear suits and ties. 
+                        We ask that everyone – men and women – come to Mass dressed modestly.
+                        We kindly request attendees to refrain from wearing the color Purple. 
                     </p>
-                    <h5>Cocktail Night <span class="time">7PM - 12AM</span></h5>
+                    <!--<h5>Cocktail Night <span class="time">7PM - 12AM</span></h5>
                     <p>
                         <strong>Western attire</strong>
                         <br>
@@ -250,7 +280,7 @@
                         suit/blazer, you can do a <a
                             href="https://www.pinterest.com/ramswarooppatra/high-neck-jackets-for-men/">high-neck
                         (band gala) waistcoat & shirt</a> combo.
-                    </p>
+                    </p>-->
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -362,19 +392,19 @@
 </section>
 
 <section id="video-bg" class="hidden-sm hidden-xs">
-    <div id="bgndVideo" class="player"
-         data-property="{videoURL:'https://youtu.be/9giqL1H6yRs',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:80, stopAt:259, opacity:1}">
+    <div id="bgndImage">
+        <img src="https://img.ecatholic.com/28618/slideshows/homeCustom1920x680/DSC_3746-1.jpg?t=1623252191000" alt="Background Image" style="width: 100%; height: auto;">
     </div>
     <div id="video-content">
-        <h5>Kolkata</h5>
-        <p>City of joy</p>
+        <h5>New Boston and Wyandotte, Michigan</h5>
+        <p>Near Detroit, Michigan</p>
     </div>
 </section>
 
 <section id="map" class="section-padding">
     <div class="text-center">
-        <h3>How do I get there?</h3>
-        <p>It's way easier than you think!</p>
+        <h3>Travel Information</h3>
+        <p>Flights should go through Detroit Airport (DTW)/p>
     </div>
     <div id="map-canvas"></div>
     <div id="map-content-wrapper" class="container pointer-events-none">
@@ -388,20 +418,20 @@
                 <div id="map-content" class="pointer-events-auto">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>ITC Fortune Park</h5>
-                            <p>Kona Expressway, Howrah, West Bengal 711403, India</p>
-                        </div>
+                            <h5>St Stephen Catholic Church</h5>
+                            <p>18858 Huron River Dr, New Boston, MI 48164</p>
+                        <!--</div>
                         <div class="col-md-6">
                             <h5>Mr. Amit Roy</h5>
                             <p><i class="fa fa-mobile"></i> <a href="tel://+919412345678">+91 9412345678</a><br>
                                 <i class="fa fa-mobile"></i> <a href="tel://+917123456789">+91 7123456789</a></p>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="row text-center">
                         <div class="col-md-6" style="padding: 5px;">
                             <a class="btn btn-fill btn-small"
-                               href="https://m.uber.com/ul/?action=setPickup&client_id=Yh7Dl6SjB56RY2JuuZF8ttVa6ryFV78W&pickup=my_location&dropoff[formatted_address]=Fortune%20Park%20Panchwati%20-%20Hotels%20in%20Kolkata%2C%20Howrah%2C%20West%20Bengal%2C%20India&dropoff[latitude]=22.593276&dropoff[longitude]=88.270277"><i
-                                    class="fa fa-taxi"></i>&nbsp;&nbsp;Book Uber</a>
+                               href="https://www.google.com/travel/flights?tfs=CBwQARojEgoyMDI1LTA4LTA3agwIAhIIL20vMHNxYzhyBwgBEgNEVFcaIxIKMjAyNS0wOC0wOWoHCAESA0RUV3IMCAISCC9tLzBzcWM4QAFIAXABggELCP___________wGYAQE&tfu=KgIIAw"><i
+                                    class="fa fa-taxi"></i>&nbsp;&nbsp;Book Flight</a>
                         </div>
                         <div class="col-md-6" style="padding: 5px;">
                             <a class="btn btn-accent btn-small" id="btn-show-map"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show
@@ -478,8 +508,7 @@
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
                     <button class="btn-fill rsvp-btn">
-                        Yes,
-                        that's me!
+                        Confirm
                     </button>
                 </form>
             </div>
@@ -492,7 +521,7 @@
         <div class="row">
             <div class="col-sm-12 text-center content">
                 <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
-                <p>Crafted by Ram with lots of <span class="fa fa-heart pulse2"></span> for Antara</p>
+                <p>Crafted by Andrew and Emma with <span class="fa fa-heart pulse2"></span></p>
             </div>
         </div>
     </div>
