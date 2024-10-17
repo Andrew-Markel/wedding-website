@@ -48,29 +48,6 @@
                 document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
             }
         }
-
-        // Create popup for alcohol pane
-        function showPopup(event) {
-            var popup = document.getElementById("myPopup");
-
-            // Get the position of the link
-            var linkRect = event.target.getBoundingClientRect();
-            
-            // Set the position of the pop-up above the link
-            popup.style.left = linkRect.left + "px";
-            popup.style.top = (linkRect.top - popup.offsetHeight) + "px";
-
-            // Show the pop-up
-            popup.style.display = "block";
-
-            // Close the pop-up when clicking outside
-            document.addEventListener('click', function closePopup(e) {
-                if (!popup.contains(e.target) && e.target !== event.target) {
-                    popup.style.display = 'none';
-                    document.removeEventListener('click', closePopup);
-                }
-            });
-        }
     </script>
 
     <link rel="stylesheet" href="css/normalize.min.css">
@@ -219,6 +196,30 @@
                     <div class="popup" id="myPopup">
                         Reasons for no alcohol go here. TBD
                     </div>
+                    <script>
+                        // Create popup for alcohol pane
+                        function showPopup(event) {
+                            var popup = document.getElementById("myPopup");
+                
+                            // Get the position of the link
+                            var linkRect = event.target.getBoundingClientRect();
+                            
+                            // Set the position of the pop-up above the link
+                            popup.style.left = linkRect.left + "px";
+                            popup.style.top = (linkRect.top - popup.offsetHeight) + "px";
+                
+                            // Show the pop-up
+                            popup.style.display = "block";
+                
+                            // Close the pop-up when clicking outside
+                            document.addEventListener('click', function closePopup(e) {
+                                if (!popup.contains(e.target) && e.target !== event.target) {
+                                    popup.style.display = 'none';
+                                    document.removeEventListener('click', closePopup);
+                                }
+                            });
+                        }
+                    </script>
                 </div>
                 <!--<div class="wp6">
                     <h5>Wedding <span class="time">6PM-12AM</span></h5>
